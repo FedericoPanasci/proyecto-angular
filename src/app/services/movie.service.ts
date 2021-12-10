@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Movie } from '../models/movie.model';
-import { movieMock } from './movie.mock';
+import { moviesMock } from './movie.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +10,18 @@ export class MovieService {
 
   movies: Movie[] = [];
 
-  constructor() { }
+  constructor() {MovieService: MovieService }
 
-  getMovie(movie1: string){
-    return this.movies.find(movie => {movie.name === movie1});
+
+  getMovie(movie1: string): Observable<Movie | undefined>{
+    return of (this.movies.find(movie => {movie.title === movie1}));
   }
 
-  getDetail(movie: Movie){
-    let index = this.movies.indexOf(movie);
-    return this.movies[index];
+  getDetail(id: string): Observable<Movie | undefined>{
+    return of (moviesMock.find(movie => movie.id === id));
   }
 
   getList(): Observable<Movie[]>{
-    return of(movieMock);
+    return of(moviesMock);
   }
 }

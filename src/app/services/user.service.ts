@@ -12,6 +12,15 @@ export class UserService {
 
   constructor() {}
 
+  construct(name: string, password: string, age: number, mail: string){
+    return this.usuario = [{
+      usuario.name = name,
+      usuario.mail = mail,
+      usuario.password = password,
+      usuario.age = age
+    }]
+  }
+
   add(user: User){
     return this.usuario.push(user);
   };

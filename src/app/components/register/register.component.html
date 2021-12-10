@@ -1,1 +1,46 @@
-<p>register works!</p>
+<div class="register row aling-items-center">
+  <form [formGroup]="userForm">
+    <div class="form-group col">
+      <label for="name" class="col-sm-2 col-form-label">name</label>
+      <input type="text" name="name" id="name" class="form-control" formControlName="name">
+      <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="alert alert-danger">
+        ingrese un nombre
+      </div>
+    </div>
+
+    <div class="form-group col">
+      <label for="mail" class="col-sm-2 col-form-label">mail</label>
+      <input type="text" name="mail" id="mail" class="form-control" formControlName="mail">
+      <div *ngIf="userForm.controls['mail'].invalid && userForm.controls['mail'].touched" class="alert alert-danger">
+        ingrese un mail
+      </div>
+    </div>
+
+    <div class="form-group col">
+      <label for="password" class="col-sm-2 col-form-label">password</label>
+      <input type="password" name="password" id="password" class="form-control" formControlName="password">
+      <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="alert alert-danger">
+      ingrese una contraseña
+      </div>
+    </div>
+
+
+    <div class="form-group col">
+      <label for="password2" class="col-sm-2 col-form-label">password</label>
+      <input type="password" name="password2" id="password2" class="form-control" formControlName="password2">
+      <div *ngIf="userForm.controls['password2'] !== userForm.controls['password'] && userForm.controls['password2'].touched" class="alert alert-danger">
+        ingrese nuevamente su password
+      </div>
+    </div>
+
+    <div class="form-group col">
+      <label for="age" class="col-sm-2 col-form-label">age</label>
+      <input type="number" name="age" id="age" class="form-control" formControlName="age">
+      <div *ngIf="userForm.controls['age'].invalid && userForm.controls['age'].touched" class="alert alert-danger">
+      ingrese un edad
+      </div>
+    </div>
+
+    <button type="button" [disabled]="userForm.invalid" class="btn btn-outline-primary col"(click)="validateRegister()">iniciar</button>
+  </form>
+</div>

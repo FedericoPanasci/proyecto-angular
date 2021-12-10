@@ -12,14 +12,14 @@ export class CartService {
   cart: Cart[] = [];
   constructor() {}
 
-  add(movie: Movie){
-    this.cart.push(movie);
-  }
+  // add(movie: Movie){
+  //   this.cart.push(movie);
+  // }
 
-  remove(name: Movie){
-    let index = this.cart.indexOf(name);
-    return this.cart.splice(index, 1);
-  }
+  // remove(name: Movie){
+  //   let index = this.cart.indexOf(name);
+  //   return this.cart.splice(index, 1);
+  // }
 
   clear(){
     return this.cart = [];

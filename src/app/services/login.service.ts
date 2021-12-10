@@ -9,22 +9,8 @@ import { userMock } from './user.mock';
 export class LoginService {
 
   user: User[] = [];
-  constructor() { }
 
-  validateLogin(mail: string, password: string): boolean{
-    const usuario = this.user.find(usuario => {
-      if (usuario.mail === mail){
-        if (usuario.password === password){
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    })
-    return false;
-  }
+  constructor() { }
 
   getList(): Observable<User[]>{
     return of(userMock);
