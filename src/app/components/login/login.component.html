@@ -1,0 +1,19 @@
+<div class="login container">
+  <form [formGroup="loginForm"] class="row mb-3">
+    <div class="form-group">
+      <label for="name" class="col-sm-2 col-form-label">name</label>
+      <input type="text" name="name" id="name" class="form-control" formControlName="name">
+      <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="alert alert-danger">
+        ingrese un nombre
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="mail" class="col-sm-2 col-form-label">Mail</label>
+      <input type="password" name="password" id="password" class="form-control" formControlName="password">
+      <div *ngIf="userForm.controls['password'].invalid" class="alert alert-danger">
+      ingrese un password
+      </div>
+    </div>
+  </form>
+</div>
