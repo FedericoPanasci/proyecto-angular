@@ -12,14 +12,17 @@ export class UserService {
 
   constructor() {}
 
-  construct(name: string, password: string, age: number, mail: string){
-    return this.usuario = [{
-      usuario.name = name,
-      usuario.mail = mail,
-      usuario.password = password,
-      usuario.age = age
-    }]
+  construct(name: string, password: string, age: number, mail: string): User [] {
+    let usuario: User = {
+      name: name,
+      mail: mail,
+      password: password,
+      age: age
+    }
+    this.usuario.push(usuario);
+    return this.usuario;
   }
+
 
   add(user: User){
     return this.usuario.push(user);

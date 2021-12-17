@@ -1,3 +1,3 @@
-import { Cart } from "../models/cart.model";
+import { Movie } from "../models/movie.model";
 
-export const cartMock: Cart[] = [];
+export const cartMock: Movie[] = [];

@@ -30,6 +30,26 @@ export class RegisterComponent implements OnInit {
   }
 
   validateRegister(){
-    this.user.push(this.userService.construct(this.userForm.controls['name'].value, this.userForm.controls['password'].value, this.userForm.controls['age'].value, this.userForm.controls['mail'].value));
+    let usuario: User[] = this.userService.construct(this.userForm.controls['name'].value,
+    this.userForm.controls['password'].value,
+    this.userForm.controls['age'].value,
+    this.userForm.controls['age'].value)
+
+    usuario.forEach(user => {
+      this.user.push(user);
+    })
+
+    //this.user.push(this.userService.construct(this.userForm.controls['name'].value, this.userForm.controls['password'].value, this.userForm.controls['age'].value, this.userForm.controls['mail'].value));
   }
+
+  // validateRegister(){
+  //   let usuario : User[] = this.userService.construct(this.userForm.controls['name'].value,
+  //   this.userForm.controls['password'].value,
+  //   this.userForm.controls['age'].value,
+  //   this.userForm.controls['mail'].value)
+  //   usuario.forEach(user =>{
+  //     this.user.push(user);
+  //   })
+
+  // }
 }
