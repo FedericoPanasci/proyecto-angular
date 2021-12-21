@@ -12,6 +12,7 @@ export class PersonaListComponent implements OnInit, AfterViewInit {
   @Input() personas: Persona[] = [];
   @Output() selected = new EventEmitter<Persona>();
 
+
   selectedPersona: Persona = { nombre: '', apellido: '' };
 
   constructor() { }

@@ -13,6 +13,7 @@ export class PersonaItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('persona item', this.persona);
   }
 
 }

@@ -27,16 +27,18 @@ export class HooksComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // const lastElement: any = document.querySelector('.last-element');
-    // lastElement?.scrollIntoView();
-    // console.log('hooks - after');
+    const lastElement: any = document.querySelector('.last-element');
+    lastElement?.scrollIntoView();
+    console.log('hooks - after');
+  }
+
+
+  ngOnDestroy(): void{
+    this.subscriptions?.unsubscribe();
+    console.log('hooks - ondestroy');
   }
 
   selectedPerson(person: Persona){
     this.personService.getById(String(person.id)).subscribe(data => console.log(data));
-  }
-  ngOnDestroy(): void{
-    this.subscriptions?.unsubscribe();
-    console.log('hooks - ondestroy');
   }
 }
