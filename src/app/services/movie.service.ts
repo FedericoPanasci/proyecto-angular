@@ -10,7 +10,7 @@ export class MovieService {
 
   movies: Movie[] = [];
 
-  constructor() {MovieService: MovieService }
+  constructor() {}
 
 
   getMovie(movie1: string): Observable<Movie | undefined>{
