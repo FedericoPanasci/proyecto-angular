@@ -16,6 +16,8 @@ import { HooksComponent } from './components/hooks/hooks.component';
 import { PersonaItemComponent } from './components/persona-item/persona-item.component';
 import { PersonaListComponent } from './components/persona-list/persona-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
 
   ngOnInit(): void {
-    this.movieService.getList().subscribe(movies => this.movies = movies);
+    this.movieService.getList().subscribe(movies => this.movies === movies);
   }
 
   navigateToDetail(id: string){

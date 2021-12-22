@@ -8,6 +8,7 @@ import { PersonService } from 'src/app/services/person.service';
   templateUrl: './hooks.component.html',
   styleUrls: ['./hooks.component.scss']
 })
+
 export class HooksComponent implements OnInit, OnDestroy, AfterViewInit {
 
   persons : Persona[] = [];
@@ -15,7 +16,6 @@ export class HooksComponent implements OnInit, OnDestroy, AfterViewInit {
   private subscriptions: Subscription | undefined;
   constructor(
     private personService: PersonService
-    //private personService: personService
     ) {
       console.log('hooks - consructor');
     }
@@ -31,7 +31,6 @@ export class HooksComponent implements OnInit, OnDestroy, AfterViewInit {
     lastElement?.scrollIntoView();
     console.log('hooks - after');
   }
-
 
   ngOnDestroy(): void{
     this.subscriptions?.unsubscribe();
