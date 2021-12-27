@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { userMock } from './user.mock';
 
@@ -8,9 +10,16 @@ import { userMock } from './user.mock';
 })
 export class UserService {
 
-  usuario: User[] = [];
 
-  constructor() {}
+
+  usuario: User[] = [];
+  private url = environment.UserRestApi + 'users';
+
+
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+
 
   construct(name: string, password: string, age: number, mail: string): User [] {
     let usuario: User = {
@@ -23,7 +32,6 @@ export class UserService {
     return this.usuario;
   }
 
-
   add(user: User){
     return this.usuario.push(user);
   };
@@ -34,7 +42,7 @@ export class UserService {
     });
   };
 
-  getList(): Observable<User[]>{
-    return of(userMock);
+  getList(id: string): Observable <User[]>{
+    return this.httpClient.get<User[]>(this.url);
   }
 }

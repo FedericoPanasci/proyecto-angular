@@ -1,0 +1,18 @@
+<!--
+<p>{{ movie?.title }}</p>
+<img [src]="movie?.image?.url" alt=""> -->
+
+<div class="movie-container" >
+  <mat-card class="example-card card" style="width: 18rem;">
+    <mat-card-header>
+      <h5 class="card-title">{{movie?.title}}</h5>
+    </mat-card-header>
+    <img mat-card-image [src]="movie?.image?.url" alt="foto de la pelicula">
+    <mat-card-content>
+      <p class="card-text">algo</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="add(movie)">Agregar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -10,7 +10,7 @@ import { Persona } from '../models/persona.model';
 })
 export class PersonService {
 
-  private url = environment.moviesRestApi + 'persons';
+  private url = environment.UserRestApi + 'persons';
   constructor(
     private HttpClient: HttpClient
   ) { }

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Cart } from '../models/cart.model';
 import { Movie } from '../models/movie.model';
-import { cartMock } from './cart.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +8,7 @@ import { cartMock } from './cart.mock';
 export class CartService {
 
   private list: Movie[] = [];
-  cart: Cart[] = [];
+
   constructor() {}
 
   add(movie: Movie){

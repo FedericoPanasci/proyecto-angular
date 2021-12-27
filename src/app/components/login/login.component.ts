@@ -20,26 +20,29 @@ export class LoginComponent implements OnInit {
 
   //loginService: LoginService | undefined;
 
-  constructor(private loginService: LoginService) { }
+  // constructor(private loginService: LoginService) { }
 
-  ngOnInit(): void {
-    this.loginService.getList().subscribe(user => this.user = user);
-  }
+  // ngOnInit(): void {
+  //   this.loginService.getList().subscribe(user => this.user = user);
+  // }
 
-  validateLogin(): boolean{
-    this.user.forEach(usuario => {
-      if(usuario.mail === this.userForm.controls['mail'].value){
-        console.log('mail valido');
-        if(usuario.password === this.userForm.controls['password'].value){
-          console.log('contraseña valido');
-          return true;
-        }
-        console.log('contraseña invalida');
-        return false;
-      }
-      console.log('mail invalido');
-      return false;
-    });
-    return false;
-  }
+  // loginService.valid(user);
+
+
+  // validateLogin(): boolean{
+  //   this.user.forEach(usuario => {
+  //     if(usuario.mail === this.userForm.controls['mail'].value){
+  //       console.log('mail valido');
+  //       if(usuario.password === this.userForm.controls['password'].value){
+  //         console.log('contraseña valido');
+  //         return true;
+  //       }
+  //       console.log('contraseña invalida');
+  //       return false;
+  //     }
+  //     console.log('mail invalido');
+  //     return false;
+  //   });
+  //   return false;
+  // }
 }

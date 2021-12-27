@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -8,10 +9,18 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
+  public list: Movie[] = [];
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log(this.cartService.getMovies());
+    this.cartService.getList().subscribe(list => this.list = list);
   }
 
+  remove(movie: Movie){
+    this.cartService.remove(movie);
+  }
+
+  clear(){
+    this.list = this.cartService.clear();
+  }
 }

@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Movie } from '../models/movie.model';
+import { Movie } from 'src/app/models/movie.model';
+import { environment } from 'src/environments/environment';
 import { moviesMock } from './movie.mock';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class MovieService {
 
   movies: Movie[] = [];
-
+  private url = environment.UserRestApi;
   constructor() {}
 
 
@@ -25,3 +23,4 @@ export class MovieService {
     return of(moviesMock);
   }
 }
+
