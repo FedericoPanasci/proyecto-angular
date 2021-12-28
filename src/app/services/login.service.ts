@@ -1,25 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, of, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
-import { userMock } from './user.mock';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService implements OnInit{
   private subscribe: Subscription | undefined;
   user: User[] = [];
   private url = environment.UserRestApi + 'users';
 
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private userService: UserService
+  ) {
+    this.userService.getList().subscribe((user) => (this.user = user));
+  }
+  ngOnInit(): void {
+  }
 
-
-
-  getList(): Observable<User[]> | undefined {
-    return this.httpClient.get<User[]>(`${this.url}`);
+  getList():User[]{
+    return this.user;
   }
 }

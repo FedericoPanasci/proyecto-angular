@@ -1,21 +1,49 @@
 <div class="login">
-  <form [formGroup]="userForm" class="row mb-3">
-    <div class="form-group">
-      <label for="mail" class="col-sm-2 col-form-label">mail</label>
-      <input type="text" name="mail" id="mail" class="form-control" formControlName="mail">
+  <mat-form-field [formGroup]="userForm" class="col mb-3 " appearance="fill">
+    <div class="form-group example-container">
+      <!-- <label for="mail" class="col-sm-2 col-form-label">mail</label> -->
+      <mat-label id="inputMail">click for Enter your email </mat-label>
+
+      <input matInput placeholder="example@mail.com" formControlName="mail" required>
+      <!-- <input type="text" name="mail" id="mail" class="form-control" formControlName="mail"> -->
+      <!-- <mat-error *ngIf="userForm.controls['mail'].invalid && userForm.controls['mail'].touched">{{getErrorMessage()}}</mat-error> -->
       <div *ngIf="userForm.controls['mail'].invalid && userForm.controls['mail'].touched" class="alert alert-danger">
-        ingrese un nombre
+        ingrese un email
       </div>
     </div>
+  </mat-form-field>
+  <!-- <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div> -->
 
-    <div class="form-group row mb-3">
-      <label for="password" class="col-sm-2 col-form-label">password</label>
-      <input type="password" name="password" id="password" class="form-control" formControlName="password">
+  <mat-form-field>
+    <div class="form-group col mb-3 example-container">
+      <!-- <label for="password" class="col-sm-2 col-form-label">password</label> -->
+      <mat-label>Enter your password</mat-label>
+
+      <!-- <input type="password" name="password" id="password" class="form-control" formControlName="password"> -->
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <!-- <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+      </button>
+
       <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="alert alert-danger">
       ingrese un password
       </div>
     </div>
     <button type="submit" [disabled]="userForm.invalid" (click)="validateLogin()">iniciar</button>
-  </form>
+  </mat-form-field>
+
+  <!--   <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field> -->
 </div>
 

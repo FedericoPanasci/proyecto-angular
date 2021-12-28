@@ -1,14 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
-import { userMock } from './user.mock';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnInit{
 
 
 
@@ -16,10 +15,14 @@ export class UserService {
   private url = environment.UserRestApi + 'users';
 
 
-  constructor(
-    private httpClient: HttpClient
-  ) {}
+  constructor(private httpClient: HttpClient) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
+  // ngOnInit(): void {
+  //   this.httpClient.get<User[]>(this.url).subscribe(response => this.usuario = response);
+  // }
 
   construct(name: string, password: string, age: number, mail: string): User [] {
     let usuario: User = {
@@ -42,7 +45,7 @@ export class UserService {
     });
   };
 
-  getList(id: string): Observable <User[]>{
+  getList(): Observable <User[]>{
     return this.httpClient.get<User[]>(this.url);
   }
 }
