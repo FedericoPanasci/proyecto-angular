@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MovieService } from 'src/app/features/movies/service/movie.service';
-import { Movie } from 'src/app/models/movie.model';
+import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,24 +12,25 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
   private subcription: Subscription | undefined;
-  movie!: Movie;
-  moviesCart: Movie[] = [];
+  movieApi: MovieAPI | any;
+  urlPath: string = 'https://image.tmdb.org/t/p/w500';
+  moviesCart: MovieAPI[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private moviesService: MovieService,
     public cartService: CartService
-  ) { }
+  ) {
+
+   }
 
   ngOnInit(): void {
-    this.subcription = this.moviesService.getDetail(this.activatedRoute.snapshot.params['id']).subscribe(
-      movie => {
-        if (movie != undefined) this.movie = movie;
-      }
-    )
-    this.cartService.getList().subscribe(movies => this.moviesCart = movies);
+    this.moviesService.getDetailApi(this.activatedRoute.snapshot.params['id']).subscribe(response => {
+      this.movieApi = response;
+    })
   }
-  add(movie1: Movie){
+
+  add(movie1: MovieAPI){
     this.cartService.add(movie1);
   };
 

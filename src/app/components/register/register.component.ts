@@ -35,8 +35,18 @@ export class RegisterComponent implements OnInit {
     this.userForm.controls['password'].value,
     this.userForm.controls['age'].value);
 
+    let array : User = {
+      name: this.userForm.controls['name'].value,
+      mail: this.userForm.controls['mail'].value,
+      password: this.userForm.controls['password'].value,
+      age: this.userForm.controls['age'].value,
+      id: this.user.length+1,
+    }
+
+    this.userService.add(array);
     //this.user.push(this.userService.construct(this.userForm.controls['name'].value, this.userForm.controls['password'].value, this.userForm.controls['age'].value, this.userForm.controls['mail'].value));
   }
+
 
   // validateRegister(){
   //   let usuario : User[] = this.userService.construct(this.userForm.controls['name'].value,

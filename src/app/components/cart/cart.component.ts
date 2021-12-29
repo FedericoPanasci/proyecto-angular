@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie.model';
+import { MovieAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
-  public list: Movie[] = [];
+  urlPath: string = 'https://image.tmdb.org/t/p/w500';
+  public list: MovieAPI[] = [];
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartService.getList().subscribe(list => this.list = list);
   }
 
-  remove(movie: Movie){
+  remove(movie: MovieAPI){
     this.cartService.remove(movie);
   }
 
