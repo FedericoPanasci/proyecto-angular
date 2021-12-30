@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { observable, Observable, of, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { UserService } from './user.service';
@@ -15,17 +15,20 @@ export class LoginService implements OnInit{
 
   constructor(
     private userService: UserService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
   ) {
-    this.userService.getList().subscribe((user) => (this.user = user));
+    this.userService.getList().subscribe(response => this.user = response);
   }
   ngOnInit(): void {
   }
 
-  validate(mail: string, password: string):Observable<boolean>{
-    return this.httpClient.post<boolean>(this.url, {mail, password});
-  }
-  getList():User[]{
-    return this.user;
+  validate(mail: string, password: string):boolean{
+    let valid: boolean = false;
+    this.user.forEach(usuario => {
+      if(usuario.mail === mail && usuario.password === password){
+        valid = true;
+      }
+    })
+    return valid;
   }
 }

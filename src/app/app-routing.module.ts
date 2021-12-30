@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
 import { HooksComponent } from './components/hooks/hooks.component';
 import { LoginComponent } from './components/login/login.component';
-//import { MovieDetailComponent } from './features/movies/components/movie-detail/movie-detail.component';
-//import { MoviesComponent } from './components/movies/movies.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { RegisterComponent } from './components/register/register.component';
 

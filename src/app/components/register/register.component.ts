@@ -24,38 +24,23 @@ export class RegisterComponent implements OnInit {
     const password = this.userForm.controls['password'];
     const age = this.userForm.controls['age'];
     const mail = this.userForm.controls['mail'];
-
-    //this.userService.getList().subscribe(user => this.user = user);
-    //this.userService.add(this.userForm);
   }
 
   validateRegister(){
-    this.userService.construct(this.userForm.controls['name'].value,
-    this.userForm.controls['mail'].value,
-    this.userForm.controls['password'].value,
-    this.userForm.controls['age'].value);
+    // this.userService.construct(this.userForm.controls['name'].value,
+    // this.userForm.controls['mail'].value,
+    // this.userForm.controls['password'].value,
+    // this.userForm.controls['age'].value);
 
     let array : User = {
       name: this.userForm.controls['name'].value,
       mail: this.userForm.controls['mail'].value,
       password: this.userForm.controls['password'].value,
       age: this.userForm.controls['age'].value,
-      id: this.user.length+1,
+      id: "",
     }
-
-    this.userService.add(array);
-    //this.user.push(this.userService.construct(this.userForm.controls['name'].value, this.userForm.controls['password'].value, this.userForm.controls['age'].value, this.userForm.controls['mail'].value));
+    console.log(array);
+    this.userService.add(array).subscribe(response => console.log(response));
+    this.userForm.reset();
   }
-
-
-  // validateRegister(){
-  //   let usuario : User[] = this.userService.construct(this.userForm.controls['name'].value,
-  //   this.userForm.controls['password'].value,
-  //   this.userForm.controls['age'].value,
-  //   this.userForm.controls['mail'].value)
-  //   usuario.forEach(user =>{
-  //     this.user.push(user);
-  //   })
-
-  // }
 }

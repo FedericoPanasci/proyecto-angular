@@ -13,15 +13,19 @@ export class CartService {
   constructor() {}
 
   add(movie: MovieAPI){
-  this.list.push(movie);
+    if (!this.list.find(element => element.id === movie.id)){
+      this.list.push(movie);
+    } else {
+      alert("ya se agrego antes");
+    };
   }
 
-  remove(name: MovieAPI){
+  remove(name: MovieAPI):MovieAPI[]{
   let index = this.list.indexOf(name);
   return this.list.splice(index, 1);
   }
 
-  clear(){
+  clear(): MovieAPI[]{
     return this.list = [];
   }
 
