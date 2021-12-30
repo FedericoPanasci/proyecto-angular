@@ -1,27 +1,24 @@
-:host{
-  display:grid;
-  grid-column: auto;
-}
-.example-container .mat-form-field + .mat-form-field {
-  margin-left: 8px;
-}
-#inputMail{
-  margin: auto 10px;
+.container{
+  margin-top: 20px;
+  background-color: var(--fondoNav);
+  border-radius:5px;
+  .mb-3{
+    margin: 10px auto;
+    width: 50rem;
+    color: var(--fondo);
+  }
+  button{
+    display: grid;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 10rem auto;
+    background-color: var(--contraste);
+    color: var(--letra);
+    border-color: var(--);
+    &:hover{
+      background: #ff96ad;
+      box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
+    }
+  }
 
-}
-.example-container .mat-form-field + .mat-form-field {
-  margin-left: 8px;
-}
-
-.example-right-align {
-  text-align: right;
-}
-
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.example-right-align {
-  -moz-appearance: textfield;
 }

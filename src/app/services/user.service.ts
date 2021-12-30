@@ -11,28 +11,14 @@ import { LoginService } from './login.service';
 })
 export class UserService implements OnInit{
 
-
-
   usuario: User[] = [];
   private url = environment.UserRestApi;
-
 
   constructor(private httpClient: HttpClient,
     ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-
-  // construct(name: string, password: string, age: number, mail: string): User [] {
-  //   let usuario: User = {
-  //     name: name,
-  //     mail: mail,
-  //     password: password,
-  //     age: age
-  //   }
-  //   //this.usuario.push(usuario);
-  //   return this.usuario;
-  // }
 
   add(usuario: User):Observable<User>{
     return this.httpClient.post<User>(this.url, usuario);

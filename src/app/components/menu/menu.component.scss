@@ -3,3 +3,23 @@
   //position: fixed;
   width: 100%;
 }
+.navbar-toggler{
+  color: var(--fondoNav);
+}
+#navbarNav{
+  background-color: var(--fondoNav);
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  li{
+    a{
+      color: var(--letra);
+      font-size: 16px;
+      &:hover{
+        background: #ff96ad;
+        box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
+        border-radius: 5px;
+      }
+    }
+  }
+}

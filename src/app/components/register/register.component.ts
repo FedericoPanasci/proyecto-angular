@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
       age: this.userForm.controls['age'].value,
       id: "",
     }
-    console.log(array);
     this.userService.add(array).subscribe(response => console.log(response));
     this.userForm.reset();
   }

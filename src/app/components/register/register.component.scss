@@ -1,0 +1,29 @@
+.formulario{
+  margin: 0 25%;
+  justify-content: center;
+  display:flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  .form-group{
+    position: relative;
+    text-align:left;
+    color: var(--letra);
+    .form-control{
+      height: 50px;
+    }
+  }
+  button{
+    display: grid;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 10rem auto;
+    background-color: var(--contraste);
+    color: var(--letra);
+    border-color: var(--);
+    &:hover{
+      background: #ff96ad;
+      box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
+    }
+  }
+}
+

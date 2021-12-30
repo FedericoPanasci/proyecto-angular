@@ -1,10 +1,41 @@
 .movie-container{
   display: flex;
   margin: 20px;
+  justify-content: center;
   flex-wrap: wrap;
-
+  .mat-card{
+    color: var(--fondo);
+    background-color: var(--fondoNav)!important;
+  }
   .card{
     margin-right: 20px;
     margin-bottom: 30px;
+  }
+  .card-title{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .card-action{
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+  button{
+    display: grid;
+    justify-content: center;
+    margin-left: 16px;
+    margin-right: 5px;
+    padding: 10rem auto;
+    background-color: var(--letra);
+    color: var(--contraste);
+    border-color: var(--);
+    &:hover{
+      background: #ff96ad;
+      box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
+    }
   }
 }
