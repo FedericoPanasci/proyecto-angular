@@ -26,7 +26,6 @@ export class MoviesComponent implements OnInit {
   moviesAPI: MovieAPI[] = [];
 
   ngOnInit(): void {
-    //this.movieService.getList().subscribe(movies => this.movies = movies);
     this.movieService.getListApi().subscribe(response => {
       this.respuesta = response.results;
       console.log('ngoninit movies-component');
@@ -42,13 +41,6 @@ export class MoviesComponent implements OnInit {
       this.moviesCart = this.moviesAPI;
       this.cartService.getList().subscribe(movie => this.moviesCart = movie);
     })}
-
-    //-----------------funciones con api
-    //getDetailApi(){
-      //this.movieService.getDetailApi(id)}
-
-    //getMovieApi(){getMovieApi(title)}
-    //-----------------funciones con mock
 
    navigateToDetail(id: string){
      this.router.navigate(['peliculas', id]);

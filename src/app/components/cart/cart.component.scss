@@ -1,62 +1,63 @@
-.container{
+.container {
   display: flex;
   margin: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  button{
-    display: grid;
+  .clear {
+    display: flex;
     justify-content: center;
     margin-left: 16px;
     margin-right: 5px;
-    padding: 10rem auto;
+    padding-bottom: 0px;
     background-color: var(--letra);
     color: var(--contraste);
     border-color: var(--);
-    &:hover{
+    &:hover {
       background: #ff96ad;
       box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
     }
   }
 }
-.movie-container{
+.movie-container {
   display: flex;
   margin: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  .mat-card{
+  .mat-card {
     color: var(--fondo);
-    background-color: var(--fondoNav)!important;
+    background-color: var(--fondoNav) !important;
   }
-  .card{
+  .card {
     margin-right: 20px;
     margin-bottom: 30px;
   }
-  .card-title{
+  .card-title {
     font-size: 12px;
     font-weight: bold;
   }
-  .card-action{
-    margin: 0 2rem;
+  .card-action {
     display: flex;
+    margin-bottom:0em;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
-  }
-  button{
-    display: grid;
+    flex-wrap: nowrap;
     justify-content: center;
-    margin-left: 16px;
-    margin-right: 5px;
-    padding: 10rem auto;
+    align-items: flex-end;
+    align-content: center;
+    // margin: 0 2rem;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: space-around;
+    // align-items: center;
+    // align-content: center;
+  }
+  button {
     background-color: var(--letra);
     color: var(--contraste);
     border-color: var(--);
-    &:hover{
+    &:hover {
       background: #ff96ad;
       box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
     }
   }
 }
-

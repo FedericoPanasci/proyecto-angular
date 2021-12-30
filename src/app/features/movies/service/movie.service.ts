@@ -16,36 +16,15 @@ export class MovieService {
   private parte2 = environment.lastPart;
   constructor(private httpClient: HttpClient) {}
 
-  //------------funciones con base de datos
   getListApi():Observable<MoviesAPI>{
     console.log("getlistapi de movie service");
     console.log(this.url)
     return this.httpClient.get<MoviesAPI>(this.url);
   }
 
-  // getDetailApi(id: string):Observable<MovieAPI>{
-  //   return this.httpClient.get<MovieAPI>(`${this.url}${id}`)
-  // }
-
   getDetailApi(id: string):Observable<MovieAPI>{
     return this.httpClient.get<MovieAPI>(`${this.parte1}${id}${this.parte2}`);
   }
 
-  // getMovieApi(movie1: string):Observable<MovieAPI>{
-  //   return this.httpClient.get<MovieAPI>(`${this.url}${movie1}`)
-  // }
-  //----------------funciones con mock
-  /*
-  getMovie(movie1: string): Observable<Movie | undefined>{
-    return of (this.movies.find(movie => {movie.title === movie1}));
-  }
-
-  getDetail(id: string): Observable<Movie | undefined>{
-    return of (moviesMock.find(movie => movie.id === id));
-  }
-
-  getList(): Observable<Movie[]>{
-    return of(moviesMock);
-  }*/
 }
 
