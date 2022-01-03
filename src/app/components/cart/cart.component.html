@@ -3,14 +3,14 @@
 </div>
 
 <div class="movie-container">
-  <mat-card class="example-card card" *ngFor="let movie of list" style="width: 18rem; height: 50rem;">
+  <mat-card class="example-card card" *ngFor="let movie of list" style="width: 18rem; height: 500px;">
     <mat-card-header>
-      <h5 class="card-title">{{movie.title}}</h5>
+      <h5 class="card-title" style="height: 40px">{{movie.title}}</h5>
     </mat-card-header>
     <img mat-card-image [src]="urlPath+movie.poster_path" alt="foto de la pelicula" style="height: 350px;">
-    <mat-card-content>
+    <!-- <mat-card-content>
       <p class="card-text">{{movie.overview}}</p>
-    </mat-card-content>
+    </mat-card-content> -->
     <mat-card-actions class="card-action">
       <button mat-button class="borrar" (click)="remove(movie)">Borrar</button>
     </mat-card-actions>

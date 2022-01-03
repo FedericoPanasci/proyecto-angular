@@ -20,9 +20,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private moviesService: MovieService,
     public cartService: CartService
-  ) {
-
-   }
+  ) {}
 
   ngOnInit(): void {
     this.moviesService.getDetailApi(this.activatedRoute.snapshot.params['id']).subscribe(response => {
@@ -34,8 +32,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.cartService.add(movie1);
   };
 
-  ngOnDestroy(): void {
-  this.subcription?.unsubscribe() }
-
-
+  ngOnDestroy(): void {
+    this.subcription?.unsubscribe()
+  }
 }

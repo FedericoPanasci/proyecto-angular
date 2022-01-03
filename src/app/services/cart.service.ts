@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Movie } from '../models/movie.model';
-import { MovieAPI, MoviesAPI } from '../models/movieApi.model';
+import { MovieAPI } from '../models/movieApi.model';
 
 @Injectable({
   providedIn: 'root'

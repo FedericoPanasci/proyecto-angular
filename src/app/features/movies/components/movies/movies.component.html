@@ -12,7 +12,7 @@
 <div class="movie-container">
   <mat-card class="example-card card" *ngFor="let movie of moviesAPI"  style="width: 18rem;">
     <mat-card-header>
-      <h5 class="card-title">{{movie.title}}</h5>
+      <h5 class="card-title" style="height: 40px;">{{movie.title}}</h5>
     </mat-card-header>
     <img mat-card-image [src]="movie.poster_path" alt="foto de la pelicula" style="height: 350px;">
     <mat-card-content>

@@ -18,6 +18,12 @@
     }
   }
 }
+.mat-card-header{
+  justify-content: center;
+}
+::ng-deep .mat-card-header-text{
+  margin: 0 !important;
+}
 .movie-container {
   display: flex;
   margin: 20px;
@@ -26,7 +32,11 @@
   .mat-card {
     color: var(--fondo);
     background-color: var(--fondoNav) !important;
+    // .mat-card-header{
+    //   justify-content: center;
+    // }
   }
+
   .card {
     margin-right: 20px;
     margin-bottom: 30px;

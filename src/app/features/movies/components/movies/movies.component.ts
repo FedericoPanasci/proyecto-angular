@@ -11,9 +11,7 @@ import { MovieService } from '../../service/movie.service';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  respuesta: MovieAPI[] = [];
   private urlImage = environment.imageApi;
-  urlPath: string = 'https://image.tmdb.org/t/p/w500';
   constructor(
     private movieService: MovieService,
     public cartService: CartService,
@@ -21,25 +19,17 @@ export class MoviesComponent implements OnInit {
 
     ) { }
 
-  //movies: Movie[] = [];
-  moviesCart: MovieAPI[] = [];
   moviesAPI: MovieAPI[] = [];
 
   ngOnInit(): void {
     this.movieService.getListApi().subscribe(response => {
-      this.respuesta = response.results;
+      this.moviesAPI = response.results;
       console.log('ngoninit movies-component');
-      this.moviesAPI = this.respuesta;
       console.log(this.moviesAPI);
 
       this.moviesAPI.forEach(movie => {
         movie.poster_path = this.urlImage+movie.poster_path;
-        let aux: string;
-        aux = this.urlImage+movie.poster_path;
-        movie.poster_path = aux;
       });
-      this.moviesCart = this.moviesAPI;
-      this.cartService.getList().subscribe(movie => this.moviesCart = movie);
     })}
 
    navigateToDetail(id: string){
@@ -49,5 +39,4 @@ export class MoviesComponent implements OnInit {
    add(movie: MovieAPI){
      this.cartService.add(movie);
    }
-
 }
