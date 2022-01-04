@@ -1,22 +1,10 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
   UserRestApi: 'https://61bcb65ed8542f0017824992.mockapi.io/api/persons',
-  movieApi: 'https://api.themoviedb.org/3/discover/movie?api_key=c38aedfb4397b5b2e28e2ad556bd237d&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
+  movieApi: 'https://api.themoviedb.org/3/discover/movie?api_key=c38aedfb4397b5b2e28e2ad556bd237d&language=es-ES',
   imageApi: 'https://image.tmdb.org/t/p/w500/',
   movieKey: 'c38aedfb4397b5b2e28e2ad556bd237d',
   firstPart: 'https://api.themoviedb.org/3/movie/',
-  lastPart: '?api_key=c38aedfb4397b5b2e28e2ad556bd237d'
+  lastPart: '?api_key=c38aedfb4397b5b2e28e2ad556bd237d&language=es-ES',
+  mockApi: 'https://61d4aafe8df81200178a8def.mockapi.io/movies'
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

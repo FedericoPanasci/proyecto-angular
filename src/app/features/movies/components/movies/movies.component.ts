@@ -11,7 +11,7 @@ import { MovieService } from '../../service/movie.service';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  private urlImage = environment.imageApi;
+  public urlImage = environment.imageApi;
   constructor(
     private movieService: MovieService,
     public cartService: CartService,
@@ -22,15 +22,19 @@ export class MoviesComponent implements OnInit {
   moviesAPI: MovieAPI[] = [];
 
   ngOnInit(): void {
-    this.movieService.getListApi().subscribe(response => {
-      this.moviesAPI = response.results;
-      console.log('ngoninit movies-component');
-      console.log(this.moviesAPI);
+    // this.movieService.getListApi().subscribe(response => {
+    //   this.moviesAPI = response.results;
+    //   console.log('ngoninit movies-component');
+    //   console.log(this.moviesAPI);
 
-      this.moviesAPI.forEach(movie => {
-        movie.poster_path = this.urlImage+movie.poster_path;
-      });
-    })}
+    //   this.moviesAPI.forEach(movie => {
+    //     movie.poster_path = this.urlImage+movie.poster_path;
+    //   });
+    // }
+    this.movieService.getListMock().subscribe(response => {
+      this.moviesAPI = response;
+    });
+  }
 
    navigateToDetail(id: string){
      this.router.navigate(['peliculas', id]);

@@ -23,7 +23,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.moviesService.getDetailApi(this.activatedRoute.snapshot.params['id']).subscribe(response => {
+    this.moviesService.getDetaliMock(this.activatedRoute.snapshot.params['id']).subscribe(response => {
       this.movieApi = response;
     })
   }

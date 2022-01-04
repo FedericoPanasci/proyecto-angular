@@ -1,6 +1,6 @@
 <form class="container" [formGroup]="userForm">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label for="exampleInputEmail1" class="form-label" >Email address</label>
     <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" formControlName="mail">
     <div *ngIf="userForm.controls['mail'].invalid && userForm.controls['mail'].touched" class="alert alert-danger">
       ingrese un email

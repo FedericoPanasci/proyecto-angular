@@ -22,7 +22,6 @@ export class PersonaListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { }
 
   ngAfterViewInit() {
-
     this.personaItems.forEach((persona: any) => console.log(persona))
   }
 

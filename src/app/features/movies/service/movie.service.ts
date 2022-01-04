@@ -11,20 +11,39 @@ export class MovieService {
 
   movies: Movie[] = [];
   moviesAPI: MovieAPI[] = [];
-  private url = environment.movieApi;
-  private parte1 = environment.firstPart;
-  private parte2 = environment.lastPart;
+  //private url = environment.movieApi;
+  //private parte1 = environment.firstPart;
+  //private parte2 = environment.lastPart;
+  private mock = environment.mockApi;
+
   constructor(private httpClient: HttpClient) {}
 
-  getListApi():Observable<MoviesAPI>{
-    console.log("getlistapi de movie service");
-    console.log(this.url)
-    return this.httpClient.get<MoviesAPI>(this.url);
+  // getListApi():Observable<MoviesAPI>{
+  //   return this.httpClient.get<MoviesAPI>(this.url);
+  // }
+  //-----------------
+  getListMock():Observable<MovieAPI[]>{
+    return this.httpClient.get<MovieAPI[]>(this.mock);
   }
 
-  getDetailApi(id: string):Observable<MovieAPI>{
-    return this.httpClient.get<MovieAPI>(`${this.parte1}${id}${this.parte2}`);
+  // getDetailApi(id: string):Observable<MovieAPI>{
+  //   return this.httpClient.get<MovieAPI>(`${this.parte1}${id}${this.parte2}`);
+  // }
+
+  getDetaliMock(id: number):Observable<MovieAPI>{
+    return this.httpClient.get<MovieAPI>(`${this.mock}/${id}`)
   }
 
+  addMovie(movie: MovieAPI):Observable<MovieAPI>{
+    return this.httpClient.post<MovieAPI>(this.mock, movie.id);
+  }
+
+  updateMovie(movie: MovieAPI):Observable<MovieAPI>{
+    return this.httpClient.put<MovieAPI>(`${this.mock}/${movie.id}`, movie);
+  }
+
+  deleteMovie(id: number):Observable<MovieAPI>{
+    return this.httpClient.delete<MovieAPI>(`${this.mock}/${id}`);
+  }
 }
 
