@@ -16,7 +16,11 @@ export class MovieService {
   //private parte2 = environment.lastPart;
   private mock = environment.mockApi;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.getListMock().subscribe(response => {
+      this.moviesAPI = response;
+    });
+  }
 
   // getListApi():Observable<MoviesAPI>{
   //   return this.httpClient.get<MoviesAPI>(this.url);
@@ -34,8 +38,13 @@ export class MovieService {
     return this.httpClient.get<MovieAPI>(`${this.mock}/${id}`)
   }
 
-  addMovie(movie: MovieAPI):Observable<MovieAPI>{
-    return this.httpClient.post<MovieAPI>(this.mock, movie);
+  addMovie(movie: MovieAPI):Observable<MovieAPI | string>{
+    if (!this.moviesAPI.find((element) => element.title === movie.title)) {
+      return this.httpClient.post<MovieAPI>(this.mock, movie);
+    } else {
+      alert('ya existe esa pelicula');
+      return of ("ya existe la pelicula");
+    }
   }
 
   updateMovie(movie: MovieAPI):Observable<MovieAPI>{

@@ -94,8 +94,11 @@ export class AdmMovieListComponent implements OnInit {
 
      this.movieService.addMovie(add).subscribe(response => {
        console.log(response);
-     });
-    this.movieForm.reset();
+       this.movieService.getListMock().subscribe(response =>{
+        this.movies = response;
+      })
+      this.movieForm.reset();
+    });
   }
 
   deleteMovie(){
@@ -103,6 +106,7 @@ export class AdmMovieListComponent implements OnInit {
       this.movieService.getListMock().subscribe(response =>{
         this.movies = response;
       })
+      this.movieForm.reset();
     })
   }
 
@@ -128,6 +132,7 @@ export class AdmMovieListComponent implements OnInit {
       this.movieService.getListMock().subscribe(response => {
         this.movies = response
       })
+      this.movieForm.reset();
     });
   }
 }
