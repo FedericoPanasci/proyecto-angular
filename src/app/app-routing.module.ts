@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdmMovieListComponent } from './components/adm-movie-list/adm-movie-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HooksComponent } from './components/hooks/hooks.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'admin',
+    component: AdmMovieListComponent
   },
   {
     path: 'peliculas',

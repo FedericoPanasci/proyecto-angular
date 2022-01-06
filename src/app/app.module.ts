@@ -15,6 +15,8 @@ import { PersonaListComponent } from './components/persona-list/persona-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { AdmMovieComponent } from './components/adm-movie/adm-movie.component';
+import { AdmMovieListComponent } from './components/adm-movie-list/adm-movie-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,11 @@ import { MaterialModule } from './material/material.module';
     MyAccountComponent,
     HooksComponent,
     PersonaItemComponent,
-    PersonaListComponent
+    PersonaListComponent,
+    AdmMovieComponent,
+    AdmMovieListComponent,
+    AdmMovieComponent,
+    AdmMovieListComponent
   ],
   imports: [
     BrowserModule,

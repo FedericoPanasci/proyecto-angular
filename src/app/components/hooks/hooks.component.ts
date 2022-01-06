@@ -21,7 +21,7 @@ export class HooksComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
   ngOnInit(): void {
-    this.subscriptions = this.personService.getList().subscribe(persons => persons = this.persons = persons);
+    this.subscriptions = this.personService.getList().subscribe(persons => this.persons = persons);
 
     console.log('hooks - on init');
   }

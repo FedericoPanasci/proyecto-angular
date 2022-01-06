@@ -1,0 +1,27 @@
+:host {
+  .admin {
+    .button {
+      display: grid;
+      justify-content: center;
+      margin-left: 16px;
+      margin-right: 5px;
+      padding: 10rem auto;
+      .but-add {
+        background-color: rgb(10, 240, 10);
+        color: var(--contraste);
+        &:hover {
+          background-color: rgb(10, 240, 10);
+          box-shadow: 0 0 5px rgb(10, 240, 10), 0 0 25px rgb(10, 240, 10),
+            0 0 200px rgb(10, 240, 10);
+        }
+      }
+      // background-color: var(--letra);
+      // color: var(--contraste);
+      // border-color: var(--);
+      // &:hover{
+      //   background: #ff96ad;
+      //   box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 200px #ff96ad;
+      // }
+    }
+  }
+}
