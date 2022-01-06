@@ -6,7 +6,9 @@
       <h2 class="pb-4" style="color: var(--letra);">Listado de Peliculas</h2>
       <button class="but-add" (click)="addMovie()">Agregar nueva pelicula</button>
       <app-adm-movie *ngFor="let movie of movies; let i = index"
-      [movie]= "movie">
+      [movie]= "movie"
+      [class.selected]="isSelected(movie)"
+      (click)="clickMovie(movie)">
       </app-adm-movie>
     </div>
 

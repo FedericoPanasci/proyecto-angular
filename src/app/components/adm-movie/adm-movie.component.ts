@@ -11,7 +11,7 @@ export class AdmMovieComponent implements OnInit {
 
   @Output() selected = new EventEmitter<MovieAPI>();
 
-  selectedMoie: MovieAPI = {
+  selectedMovie: MovieAPI = {
     title: '',
     poster_path: '',
     adult: false,
@@ -28,22 +28,23 @@ export class AdmMovieComponent implements OnInit {
     vote_count: 0
   };
 
-  @Input() movie: MovieAPI = {
-    title: '',
-    poster_path: '',
-    adult: false,
-    backdrop_path: '',
-    id: '',
-    genre_ids: [],
-    original_language: '',
-    original_title: '',
-    overview: '',
-    popularity: 0,
-    release_date: '',
-    video: false,
-    vote_average: 0,
-    vote_count: 0
-  };
+  @Input() movie: MovieAPI | any
+  // = {
+  //   title: '',
+  //   poster_path: '',
+  //   adult: false,
+  //   backdrop_path: '',
+  //   id: '',
+  //   genre_ids: [],
+  //   original_language: '',
+  //   original_title: '',
+  //   overview: '',
+  //   popularity: 0,
+  //   release_date: '',
+  //   video: false,
+  //   vote_average: 0,
+  //   vote_count: 0
+  // };
 
   urlPath = environment.imageApi;
   constructor() { }
@@ -51,8 +52,8 @@ export class AdmMovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickPersona(movie: MovieAPI) {
-    this.movie = movie;
-    this.selected.emit(movie);
-  }
+  // clickMovie(movie: MovieAPI) {
+  //   this.selectedMovie = movie;
+  //   this.selected.emit(movie);
+  // }
 }

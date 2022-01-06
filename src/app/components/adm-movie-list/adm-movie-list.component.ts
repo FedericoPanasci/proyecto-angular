@@ -10,6 +10,23 @@ import { MovieAPI } from 'src/app/models/movieApi.model';
 })
 export class AdmMovieListComponent implements OnInit {
 
+  selectedMovie: MovieAPI = {
+    title: '',
+    poster_path: '',
+    adult: false,
+    backdrop_path: '',
+    id: '',
+    genre_ids: [],
+    original_language: '',
+    original_title: '',
+    overview: '',
+    popularity: 0,
+    release_date: '',
+    video: false,
+    vote_average: 0,
+    vote_count: 0
+  };
+
   movieForm = new FormGroup({
     id: new FormControl(``, [Validators.required]),
     title: new FormControl(``, [Validators.required]),
@@ -33,6 +50,15 @@ export class AdmMovieListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  clickMovie(movie: MovieAPI) {
+    this.selectedMovie = movie;
+    //this.selected.emit(movie);
+  }
+
+  isSelected(movie: MovieAPI):boolean{
+    return movie.id === this.selectedMovie.id;
   }
 
   addMovie(){}
