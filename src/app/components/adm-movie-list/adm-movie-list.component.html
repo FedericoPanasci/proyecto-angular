@@ -2,7 +2,7 @@
 
   <div class="row">
 
-    <div class="col-4" id="list-movies">
+    <div class="col-4 peli" id="list-movies">
       <h2 class="pb-4" style="color: var(--letra);">Listado de Peliculas</h2>
       <button class="but-add" (click)="addMovie()">Agregar nueva pelicula</button>
       <app-adm-movie *ngFor="let movie of movies; let i = index"
@@ -16,12 +16,11 @@
       <h2 style="color: var(--letra);">Seccion administrativa</h2>
       <form class="container" [formGroup]="movieForm">
         <div class="mb-3">
-          <label for="exampleInputTitle" class="form-label" style="color: var(--letra)" >id</label>
+          <label for="exampleInputTitle" class="form-label" style="color: var(--letra)">id</label>
           <input type="text" class="form-control" id="id" aria-describedby="idHelp" formControlName="id">
           <div *ngIf="movieForm.controls['id'].invalid && movieForm.controls['id'].touched" class="alert alert-danger">
             ingrese el id
           </div>
-          <div id="idHelp" class="form-text">ingrese el id</div>
         </div>
 
         <div class="mb-3">
@@ -30,7 +29,6 @@
           <div *ngIf="movieForm.controls['title'].invalid && movieForm.controls['title'].touched" class="alert alert-danger">
             Ingrese un titulo
           </div>
-          <div id="titleHelp" class="form-text">ingrese un titulo</div>
         </div>
 
         <div class="mb-3">
@@ -39,25 +37,23 @@
           <div *ngIf="movieForm.controls['poster_path'].invalid && movieForm.controls['poster_path'].touched" class="alert alert-danger">
             ingrese un link del poster
           </div>
-          <div id="poster_pathHelp" class="form-text">ingrese un link del poster</div>
         </div>
 
         <div class="mb-3">
           <label for="exampleInputTitle" class="form-label" style="color: var(--letra)" >Fecha de lanzamiento</label>
-          <input type="text" class="form-control" id="poster_path" aria-describedby="relase_dateHelp" formControlName="relase_date">
-          <div *ngIf="movieForm.controls['relase_date'].invalid && movieForm.controls['relase_date'].touched" class="alert alert-danger">
+          <input type="text" class="form-control" id="release_date" aria-describedby="release_date" formControlName="release_date">
+          <div *ngIf="movieForm.controls['release_date'].invalid && movieForm.controls['release_date'].touched" class="alert alert-danger">
             ingrese la fecha de lanzamiento
           </div>
-          <div id="relase_dateHelp" class="form-text">ingrese la fecha de lanzamiento</div>
         </div>
 
         <div class="mb-3">
           <label for="exampleInputTitle" class="form-label" style="color: var(--letra)" >Descripcion</label>
-          <input type="text" class="form-control" id="overview" aria-describedby="overviewHelp" formControlName="overview">
+          <textarea name="overview" id="overview" cols="150" rows="8" aria-describedby="overviewHelp" formControlName="overview"></textarea>
+          <!-- <input type="text" class="form-control" id="overview" aria-describedby="overviewHelp" formControlName="overview"> -->
           <div *ngIf="movieForm.controls['overview'].invalid && movieForm.controls['overview'].touched" class="alert alert-danger">
             Ingrese una descripcion de la pelicula
           </div>
-          <div id="overviewHelp" class="form-text">Ingrese una descripcion de la pelicula</div>
         </div>
 
         <div class="mb-3">
@@ -66,12 +62,14 @@
           <div *ngIf="movieForm.controls['vote_average'].invalid && movieForm.controls['vote_average'].touched" class="alert alert-danger">
             Ingrese la valoracion de la pelicula
           </div>
-          <div id="vote_averageHelp" class="form-text">Ingrese la valoracion de la pelicula</div>
         </div>
+
 
         <button class="but-add" (click)="addMovie()">Agregar</button>
         <button class="but-delete" (click)="deleteMovie()">Eliminar</button>
         <button class="but-update" (click)="updateMovie()">Actualizar</button>
+
+
       </form>
     </div>
   </div>

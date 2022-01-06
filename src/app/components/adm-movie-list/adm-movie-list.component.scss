@@ -1,5 +1,44 @@
-:host {
-  .selected{
-    background-color: red;
+.admin {
+  button{
+    display: grid;
+    justify-content: center;
+    margin-left: 16px;
+    margin-right: 5px;
+    padding: 10rem auto;
+    width: 10rem;
+  }
+  .but-add {
+    background-color: rgb(10, 255, 10);
+    color: var(--contraste);
+    border-color: rgba(1, 248, 1, 0.5);
+    &:hover {
+      background: rgb(10, 255, 10);
+      box-shadow: 0 0 5px rgb(10, 255, 10), 0 0 25px rgb(10, 255, 10), 0 0 200px rgb(10, 255, 10);
+    }
+  }
+  .but-delete{
+    background-color: rgb(255, 10, 10);
+    color: var(--contraste);
+    border-color: rgb(255, 10, 10, 0.5);
+    &:hover {
+      background: rgb(255, 10, 10);
+      box-shadow: 0 0 5px rgb(255, 10, 10), 0 0 25px rgb(255, 10, 10), 0 0 200px rgb(255, 10, 10);
+    }
+  }
+  .but-update{
+    background-color: rgb(239, 255, 10);
+    color: var(--contraste);
+    border-color: rgb(239, 255, 10, 0.5);
+    &:hover {
+      background: rgb(239, 255, 10);
+      box-shadow: 0 0 5px rgb(239, 255, 10), 0 0 25px rgb(239, 255, 10), 0 0 200px rgb(239, 255, 10);
+    }
+  }
+}
+.peli{
+  color:white;
+  .selected {
+    background-color: var(--letra);
+    color: rgba(white, 0.87);
   }
 }

@@ -35,14 +35,14 @@ export class MovieService {
   }
 
   addMovie(movie: MovieAPI):Observable<MovieAPI>{
-    return this.httpClient.post<MovieAPI>(this.mock, movie.id);
+    return this.httpClient.post<MovieAPI>(this.mock, movie);
   }
 
   updateMovie(movie: MovieAPI):Observable<MovieAPI>{
     return this.httpClient.put<MovieAPI>(`${this.mock}/${movie.id}`, movie);
   }
 
-  deleteMovie(id: number):Observable<MovieAPI>{
+  deleteMovie(id: string):Observable<MovieAPI>{
     return this.httpClient.delete<MovieAPI>(`${this.mock}/${id}`);
   }
 }
