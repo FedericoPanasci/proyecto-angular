@@ -26,10 +26,30 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.moviesService.getDetaliMock(this.activatedRoute.snapshot.params['id']).subscribe(response => {
       this.movieApi = response;
     })
+
+    this.cartService.getListCartApi().subscribe(response => {
+      //this.moviesCart = response
+      this.movieApi = response
+      console.log(response);
+      console.log(this.movieApi);
+    }
+    )
+
+    // this.cartService.addCartApi(this.movieApi).subscribe(
+    //   response => {
+    //     this.moviesCart = response;
+    //   }
+    // )
   }
 
+  // add(movie1: MovieAPI){
+  //   this.cartService.add(movie1);
+  // };
   add(movie1: MovieAPI){
-    this.cartService.add(movie1);
+    this.cartService.addCartApi(movie1).subscribe(response => {
+      console.log(response)
+    });
+
   };
 
   ngOnDestroy(): void {
