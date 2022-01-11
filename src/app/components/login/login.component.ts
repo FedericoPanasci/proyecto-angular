@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
-import { UserService } from 'src/app/services/user.service';
+// import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   user: User[] = [];
+  error!: string;
 
   userForm = new FormGroup({
     mail: new FormControl('', [
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
   constructor(
     private loginService: LoginService,
-    private userService: UserService,
+    // private userService: UserService,
     private router: Router
     ) {
   }
@@ -51,37 +52,50 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     //cargo lo que devuelve el observable en user
     //this.loginService.getList().subscribe((user) => (this.user = user));
-    this.userService.getList().subscribe((user) => console.table(user));
+    // this.userService.getList().subscribe((user) => console.table(user));
+  }
+  submit() {
+    // if (this.userForm.valid) {
+    console.log("hola max estamos en submit")
+    this.loginService.validateCredentials(this.mailControl.value, this.passwordControl.value)
+      .subscribe(valid => {
+        console.log(valid)
+        if (valid) {
+          this.router.navigate(['peliculas']);
+        } else {
+          this.error = 'User or Password invalid';
+        }
+      })
+    // }
   }
 
+  // validateLogin(){
+  //   const verificar: boolean = this.loginService.validate(this.mailControl.value, this.passwordControl.value);
+  //   if(verificar){
+  //     this.router.navigate(['peliculas']);
+  //   } else {
+  //     alert("usuario o contraseña invalida");
+  //   }
+  //   // this.saveUser();
 
-  validateLogin(){
-    const verificar: boolean = this.loginService.validate(this.mailControl.value, this.passwordControl.value);
-    if(verificar){
-      this.router.navigate(['peliculas']);
-    } else {
-      alert("usuario o contraseña invalida");
-    }
-    // this.saveUser();
-
-    // console.log(this.userForm.controls['mail'].value);
-    // console.log("continua");
-    // this.user.forEach((usuario) => {
-    //   if (usuario.mail === this.userForm.controls['mail'].value) {
-    //     console.log('mail valido');
-    //     if (usuario.password === this.userForm.controls['password'].value) {
-    //       console.log('contraseña valido');
-    //       this.router.navigate(["peliculas"]);
-    //       return true;
-    //     }
-    //     console.log('contraseña invalida');
-    //     return false;
-    //   }
-    //   console.log('mail invalido');
-    //   return false;
-    // });
-    // return false;
-  }
+  //   // console.log(this.userForm.controls['mail'].value);
+  //   // console.log("continua");
+  //   // this.user.forEach((usuario) => {
+  //   //   if (usuario.mail === this.userForm.controls['mail'].value) {
+  //   //     console.log('mail valido');
+  //   //     if (usuario.password === this.userForm.controls['password'].value) {
+  //   //       console.log('contraseña valido');
+  //   //       this.router.navigate(["peliculas"]);
+  //   //       return true;
+  //   //     }
+  //   //     console.log('contraseña invalida');
+  //   //     return false;
+  //   //   }
+  //   //   console.log('mail invalido');
+  //   //   return false;
+  //   // });
+  //   // return false;
+  // }
 
   //----- html - mail
 

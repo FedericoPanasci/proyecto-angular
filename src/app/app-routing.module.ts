@@ -6,6 +6,8 @@ import { HooksComponent } from './components/hooks/hooks.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { RegisterComponent } from './components/register/register.component';
+import { GuardsGuard } from './components/guards/guards.guard';
+import { AllGuardsGuard } from './components/guards/all-guards.guard';
 
 const routes: Routes = [
   // {
@@ -18,14 +20,17 @@ const routes: Routes = [
   // },
   {
     path: 'cart',
+    canActivate: [AllGuardsGuard],
     component: CartComponent
   },
   {
     path: 'admin',
+    canActivate: [GuardsGuard],
     component: AdmMovieListComponent
   },
   {
     path: 'peliculas',
+    canActivate: [AllGuardsGuard],
     loadChildren: () => import('./features/movies/movies.module').then(m => m.MoviesModule)
   },
   {

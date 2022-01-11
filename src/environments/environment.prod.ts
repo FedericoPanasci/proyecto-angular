@@ -7,5 +7,6 @@ export const environment = {
   firstPart: 'https://api.themoviedb.org/3/movie/',
   lastPart: '?api_key=c38aedfb4397b5b2e28e2ad556bd237d',
   mockApi: 'https://61d4aafe8df81200178a8def.mockapi.io/movies',
-  cartRestApi: 'http://localhost:3000/api/cart'
+  cartRestApi: 'http://localhost:3000/api/cart',
+  loginRestApi: 'http://localhost:3000/api/login'
 };

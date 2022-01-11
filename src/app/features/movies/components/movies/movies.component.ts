@@ -41,7 +41,7 @@ export class MoviesComponent implements OnInit {
    }
 
    add(movie: MovieAPI){
-     this.cartService.addCartApi(movie).subscribe(response =>
-      console.log(response));
+    this.cartService.addCartApi(movie).subscribe(response =>
+    console.log(response));
    }
 }
