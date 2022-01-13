@@ -16,17 +16,11 @@ export class LoginService implements OnInit{
   private userName = '';
   private role = '';
 
-  url = `${environment.loginRestApi}`;
-
-  // private subscribe: Subscription | undefined;
-  // user: User[] = [];
-  // private url = environment.UserRestApi + 'users';
+  url = environment.loginRestApi;
 
   constructor(
-    // private userService: UserService,
     private httpClient: HttpClient,
   ) {
-    // this.userService.getList().subscribe(response => this.user = response);
   }
   ngOnInit(): void {
   }
@@ -44,6 +38,8 @@ export class LoginService implements OnInit{
   //-------loginApi
   validateCredentials(user: string, password: string): Observable<boolean> {
     console.log(user);
+    console.log(password);
+
     return this.httpClient.post<any>(this.url, { user, password })
     .pipe (
       map(response => {
