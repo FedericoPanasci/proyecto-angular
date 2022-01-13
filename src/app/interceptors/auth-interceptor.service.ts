@@ -15,13 +15,20 @@ export class AuthInterceptorService implements HttpInterceptor{
   ) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.loginService.getToken();
-    const apiLocal = req.url.startsWith(environment.loginRestApi);
+    const apiLocal = req.url.startsWith(environment.cartRestApi);
 
-    if(token !== null && apiLocal){
-      req = req.clone({
-        setHeaders: { Autorization: `Bearer ${token}`}
-      })
+    console.log("TOKEN",token);
+    console.log("APILOCAL",apiLocal);
+
+    if(token && apiLocal){
+      console.log("ENTRA A COLOCAR HEADER");
+
+        req = req.clone ({
+            setHeaders: {Authorization: `Bearer ${token}`}
+        });
     }
+
+    console.log("REQUEST",req)
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 404){
