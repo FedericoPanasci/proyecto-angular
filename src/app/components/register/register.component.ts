@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit {
     const password = this.userForm.controls['password'];
     const age = this.userForm.controls['age'];
     const mail = this.userForm.controls['mail'];
+
+    this.userService.getList().subscribe(response => console.log(response));
   }
 
   validateRegister(){
@@ -36,8 +38,7 @@ export class RegisterComponent implements OnInit {
       name: this.userForm.controls['name'].value,
       mail: this.userForm.controls['mail'].value,
       password: this.userForm.controls['password'].value,
-      age: this.userForm.controls['age'].value,
-      id: "",
+      // age: this.userForm.controls['age'].value
     }
     this.userService.add(array).subscribe(response => console.log(response));
     this.userForm.reset();

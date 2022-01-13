@@ -12,7 +12,7 @@ import { LoginService } from './login.service';
 export class UserService implements OnInit{
 
   usuario: User[] = [];
-  private url = environment.UserRestApi;
+  private url = environment.loginRestApi;
 
   constructor(private httpClient: HttpClient,
     ) {}
@@ -21,7 +21,7 @@ export class UserService implements OnInit{
   }
 
   add(usuario: User):Observable<User>{
-    return this.httpClient.post<User>(this.url, usuario);
+    return this.httpClient.post<User>(`${this.url}/addUser`, usuario);
   };
 
   get(mail: string){

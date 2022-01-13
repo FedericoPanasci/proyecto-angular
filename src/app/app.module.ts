@@ -12,11 +12,12 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { HooksComponent } from './components/hooks/hooks.component';
 import { PersonaItemComponent } from './components/persona-item/persona-item.component';
 import { PersonaListComponent } from './components/persona-list/persona-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { AdmMovieComponent } from './components/adm-movie/adm-movie.component';
 import { AdmMovieListComponent } from './components/adm-movie-list/adm-movie-list.component';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,11 @@ import { AdmMovieListComponent } from './components/adm-movie-list/adm-movie-lis
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 
 })
