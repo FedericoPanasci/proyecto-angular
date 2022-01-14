@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 // import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -60,9 +61,21 @@ export class LoginComponent implements OnInit {
     this.loginService.validateCredentials(this.mailControl.value, this.passwordControl.value)
       .subscribe(valid => {
         console.log(valid)
+        Swal.fire({
+          icon: 'success',
+          title: 'Welcome again',
+          showConfirmButton: false,
+          timer: 1500
+        })
         if (valid) {
           this.router.navigate(['peliculas']);
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'User or Password invalid',
+            footer: 'Please, try again'
+          })
           this.error = 'User or Password invalid';
         }
       })

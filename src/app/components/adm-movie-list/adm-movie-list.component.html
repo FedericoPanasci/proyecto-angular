@@ -4,7 +4,7 @@
 
     <div class="col-4 peli" id="list-movies">
       <h2 class="pb-4" style="color: var(--letra);">Listado de Peliculas</h2>
-      <button class="but-add" (click)="addMovie()">Agregar nueva pelicula</button>
+      <!-- <button class="but-add" (click)="addMovie()">Agregar nueva pelicula</button> -->
       <app-adm-movie *ngFor="let movie of movies; let i = index"
       [movie]= "movie"
       [class.selected]="isSelected(movie)"
@@ -64,11 +64,11 @@
           </div>
         </div>
 
-
+        <div class="buttons">
         <button class="but-add" (click)="addMovie()">Agregar</button>
         <button class="but-delete" (click)="deleteMovie()">Eliminar</button>
         <button class="but-update" (click)="updateMovie()">Actualizar</button>
-
+        </div>
 
       </form>
     </div>

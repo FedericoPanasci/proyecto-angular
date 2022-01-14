@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { MovieService } from 'src/app/features/movies/service/movie.service';
 import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-movie-detail',
@@ -28,28 +29,23 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     })
 
     this.cartService.getListCartApi().subscribe(response => {
-      //this.moviesCart = response
       this.movieApi = response
       console.log(response);
       console.log(this.movieApi);
     }
     )
-
-    // this.cartService.addCartApi(this.movieApi).subscribe(
-    //   response => {
-    //     this.moviesCart = response;
-    //   }
-    // )
   }
 
-  // add(movie1: MovieAPI){
-  //   this.cartService.add(movie1);
-  // };
   add(movie1: MovieAPI){
     this.cartService.addCartApi(movie1).subscribe(response => {
       console.log(response)
     });
-
+    Swal.fire({
+      icon: 'success',
+      title: 'This movie was added',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
 
   ngOnDestroy(): void {

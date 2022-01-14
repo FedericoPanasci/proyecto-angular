@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -19,9 +20,6 @@ export class CartComponent implements OnInit {
     });
   }
 
-  // remove(movie: MovieAPI){
-  //   this.cartService.remove(movie);
-  // }
   remove(movie: MovieAPI) {
     console.log(movie);
     console.log(this.list);
@@ -31,14 +29,23 @@ export class CartComponent implements OnInit {
         this.list = response;
       });
     });
+    Swal.fire({
+      icon: 'success',
+      title: 'This movie was removed',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   clear() {
     this.list.forEach((movie) => {
       this.remove(movie);
     });
+    Swal.fire({
+      icon: 'success',
+      title: 'All movies were removed',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
-  // clear(){
-  //   this.list = this.cartService.clear();
-  // }
 }

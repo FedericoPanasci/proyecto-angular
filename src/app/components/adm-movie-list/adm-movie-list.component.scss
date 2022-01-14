@@ -1,11 +1,20 @@
 .admin {
+  h2{
+    margin-left: 5rem;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   button{
     display: grid;
     justify-content: center;
     margin-left: 16px;
     margin-right: 5px;
     padding: 10rem auto;
-    width: 10rem;
+    width: 11rem;
+    height: auto;
+    border-radius: 10px;
   }
   .but-add {
     background-color: rgb(10, 255, 10);
@@ -35,10 +44,18 @@
     }
   }
 }
+}
 .peli{
   color:white;
   .selected {
     background-color: var(--letra);
     color: rgba(white, 0.87);
   }
+}
+#list-movies{
+  h2{
+    margin-left: 1rem;
+  }
+
+
 }

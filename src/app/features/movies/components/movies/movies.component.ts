@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { MovieService } from '../../service/movie.service';
 
 @Component({
@@ -22,15 +23,6 @@ export class MoviesComponent implements OnInit {
   moviesAPI: MovieAPI[] = [];
 
   ngOnInit(): void {
-    // this.movieService.getListApi().subscribe(response => {
-    //   this.moviesAPI = response.results;
-    //   console.log('ngoninit movies-component');
-    //   console.log(this.moviesAPI);
-
-    //   this.moviesAPI.forEach(movie => {
-    //     movie.poster_path = this.urlImage+movie.poster_path;
-    //   });
-    // }
     this.movieService.getListMock().subscribe(response => {
       this.moviesAPI = response;
     });
@@ -43,5 +35,11 @@ export class MoviesComponent implements OnInit {
    add(movie: MovieAPI){
     this.cartService.addCartApi(movie).subscribe(response =>
     console.log(response));
+    Swal.fire({
+      icon: 'success',
+      title: 'This movie was added',
+      showConfirmButton: false,
+      timer: 1500
+    })
    }
 }
