@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   user: User[] = [];
   error!: string;
+  login: boolean = false;
 
   userForm = new FormGroup({
     mail: new FormControl('', [
@@ -31,94 +32,51 @@ export class LoginComponent implements OnInit {
   mailControl = this.userForm.controls['mail'];
   passwordControl = this.userForm.controls['password'];
 
-  newUser:any[] = [];
+  newUser: any[] = [];
 
-  saveUser(){
+  saveUser() {
     //guardo los datos del forms en el array
     this.newUser.push(this.userForm.value);
     console.log(this.newUser);
 
     this.userForm.reset();
-
   }
-  constructor(
-    private loginService: LoginService,
-    // private userService: UserService,
-    private router: Router
-    ) {
-  }
+  constructor(private loginService: LoginService, private router: Router) {}
 
+  ngOnInit(): void {}
 
-
-  ngOnInit(): void {
-    //cargo lo que devuelve el observable en user
-    //this.loginService.getList().subscribe((user) => (this.user = user));
-    // this.userService.getList().subscribe((user) => console.table(user));
-  }
   submit() {
-    // if (this.userForm.valid) {
-    console.log("hola max estamos en submit")
-    this.loginService.validateCredentials(this.mailControl.value, this.passwordControl.value)
-      .subscribe(valid => {
-        console.log(valid)
+    this.loginService
+      .validateCredentials(this.mailControl.value, this.passwordControl.value)
+      .subscribe((valid) => {
+        console.log(valid);
         Swal.fire({
           icon: 'success',
           title: 'Welcome again',
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
         if (valid) {
+          this.login = true;
           this.router.navigate(['peliculas']);
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'User or Password invalid',
-            footer: 'Please, try again'
-          })
+            footer: 'Please, try again',
+          });
           this.error = 'User or Password invalid';
         }
-      })
-    // }
+      });
   }
-
-  // validateLogin(){
-  //   const verificar: boolean = this.loginService.validate(this.mailControl.value, this.passwordControl.value);
-  //   if(verificar){
-  //     this.router.navigate(['peliculas']);
-  //   } else {
-  //     alert("usuario o contraseña invalida");
-  //   }
-  //   // this.saveUser();
-
-  //   // console.log(this.userForm.controls['mail'].value);
-  //   // console.log("continua");
-  //   // this.user.forEach((usuario) => {
-  //   //   if (usuario.mail === this.userForm.controls['mail'].value) {
-  //   //     console.log('mail valido');
-  //   //     if (usuario.password === this.userForm.controls['password'].value) {
-  //   //       console.log('contraseña valido');
-  //   //       this.router.navigate(["peliculas"]);
-  //   //       return true;
-  //   //     }
-  //   //     console.log('contraseña invalida');
-  //   //     return false;
-  //   //   }
-  //   //   console.log('mail invalido');
-  //   //   return false;
-  //   // });
-  //   // return false;
-  // }
-
-  //----- html - mail
 
   /** @title Form field with error messages */
   @Component({
-  selector: 'form-field-error-example',
-  templateUrl: 'form-field-error-example.html',
-  styleUrls: ['form-field-error-example.css'],
+    selector: 'form-field-error-example',
+    templateUrl: 'form-field-error-example.html',
+    styleUrls: ['form-field-error-example.css'],
   })
-
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
@@ -136,8 +94,7 @@ export class LoginComponent implements OnInit {
     templateUrl: 'form-field-prefix-suffix-example.html',
     styleUrls: ['form-field-prefix-suffix-example.css'],
   })
-    hide = true;
+  hide = true;
 
   //----- html - password
-
 }

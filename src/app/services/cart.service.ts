@@ -19,7 +19,6 @@ export class CartService {
     return this.httpClient.get<any[]>(this.url);
   }
 
-  //a chequear...
   addCartApi(movie: MovieAPI): Observable<any> {
     console.log(movie);
     if (!this.list.find((element) => element.id === movie.id)) {

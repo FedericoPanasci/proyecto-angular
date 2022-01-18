@@ -1,14 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { loginServiceMock } from 'src/app/services/login.service.mock';
 
 import { LoginComponent } from './login.component';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      providers: [{
+        provide: LoginService,
+        useValue: loginServiceMock
+        },{
+          provide: Router,
+          useValue: Router
+        }
+      ]
     })
     .compileComponents();
   });
@@ -21,5 +32,10 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should change isLoggedIn to true', () => {
+    component.submit();
+    expect(component.login).toEqual(true);
   });
 });
