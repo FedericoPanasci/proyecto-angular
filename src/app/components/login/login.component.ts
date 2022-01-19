@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { showUser } from 'src/app/features/login-redux/store/login.actions';
 import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
@@ -41,9 +43,14 @@ export class LoginComponent implements OnInit {
 
     this.userForm.reset();
   }
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(
+
+  ): void {}
 
   submit() {
     this.loginService
@@ -59,6 +66,10 @@ export class LoginComponent implements OnInit {
         if (valid) {
           this.login = true;
           this.router.navigate(['peliculas']);
+          const loginUser = this.loginService.getUserInfo();
+          this.store.dispatch(
+            showUser(loginUser)
+          )
         } else {
           Swal.fire({
             icon: 'error',
