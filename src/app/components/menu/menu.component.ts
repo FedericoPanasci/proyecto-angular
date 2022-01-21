@@ -13,19 +13,20 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  userDisplay$: Observable<string> | string = '';
-
+  // userDisplay$: Observable<LoginService> | string = '';
+  user: LoginUser = {
+    user: "admin",
+    role: ""
+  }
   constructor(
     private store: Store<loginState>,
     private loginService: LoginService
   ) { }
-  user$!: Observable<LoginUser>;
 
   ngOnInit(): void {
     // this.user$.pipe(select(showUser))
-    this.userDisplay$ = this.loginService.getUserInfo();
-
+    // this.userDisplay$ = this.loginService.getUserInfo();
+    const role = JSON.parse(localStorage.getItem('role') || "");
+    this.user.role = role;
   }
-
-
 }

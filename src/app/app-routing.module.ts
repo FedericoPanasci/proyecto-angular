@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: () => import('./features/login-redux/login-redux.module').then(m => m.loginReduxModule)
   },
   {
     path: 'mi-cuenta',
