@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { forEachChild } from 'typescript';
 import { MovieAPI } from '../models/movieApi.model';
 
 @Injectable({
@@ -39,6 +40,9 @@ export class CartService {
     return this.httpClient.delete(`${this.url}?id=${id}`);
   }
 
+  clearCartApi(): Observable<MovieAPI[]>{
+    return this.httpClient.delete<MovieAPI[]>(`${this.url}/clear`);
+  }
   //--------------agregado para la apiCart
   add(movie: MovieAPI) {
     if (!this.list.find((element) => element.id === movie.id)) {

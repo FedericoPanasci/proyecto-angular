@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
     console.log(movie);
     console.log(this.list);
     this.cartService.removeCartApi(movie).subscribe((response) => {
-      this.list = response;
       this.cartService.getListCartApi().subscribe((response) => {
         this.list = response;
       });
@@ -38,8 +37,10 @@ export class CartComponent implements OnInit {
   }
 
   clear() {
-    this.list.forEach((movie) => {
-      this.remove(movie);
+    this.cartService.clearCartApi().subscribe(response => {
+      this.cartService.getListCartApi().subscribe((response) => {
+        this.list = response;
+      });
     });
     Swal.fire({
       icon: 'success',

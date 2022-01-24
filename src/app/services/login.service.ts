@@ -26,9 +26,6 @@ export class LoginService implements OnInit{
   }
 
   validateCredentials(user: string, password: string): Observable<boolean> {
-    console.log(user);
-    console.log(password);
-
     return this.httpClient.post<any>(this.url, { user, password })
     .pipe (
       map(response => {
@@ -63,5 +60,12 @@ export class LoginService implements OnInit{
       role: this.role,
       token: this.token
     }
+  }
+
+  singOut(){
+    this.token = null;
+    this.user = '';
+    this.userName = '';
+    this.role = '';
   }
 }
