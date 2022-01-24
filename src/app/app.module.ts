@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { SingOutComponent } from './components/sing-out/sing-out.component';
 import { loginReducer } from './features/login-redux/store/login.reducer';
 import { LoginComponent } from './components/login/login.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoginComponent } from './components/login/login.component';
     BrowserAnimationsModule,
     MaterialModule,
     StoreModule.forRoot({ login: loginReducer}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25 })
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
