@@ -42,7 +42,6 @@ export class MovieService {
     if (!this.moviesAPI.find((element) => element.title === movie.title)) {
       return this.httpClient.post<MovieAPI>(this.mock, movie);
     } else {
-      alert('ya existe esa pelicula');
       return of ("ya existe la pelicula");
     }
   }
