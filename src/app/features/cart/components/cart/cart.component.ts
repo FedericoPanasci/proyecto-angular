@@ -33,7 +33,8 @@ export class CartComponent implements OnInit {
 
   remove(movie: MovieAPI) {
     this.store.dispatch(cartDeleteMovie({movie: movie}))
-    this.cartService.getListCartApi().subscribe((response) => {this.list = response})
+    this.listEfects = this.store.pipe(select(cartStateSelector))
+    this.listEfects.subscribe(data => this.list = data.movies)
 
     console.log(movie);
     console.log(this.list);
@@ -52,10 +53,12 @@ export class CartComponent implements OnInit {
 
   clear() {
     this.store.dispatch(cartClear())
+    this.listEfects = this.store.pipe(select(cartStateSelector))
+    this.listEfects.subscribe(data => this.list = data.movies)
 
-    this.cartService.getListCartApi().subscribe((response) => {
-      this.list = response
-    })
+    // this.cartService.getListCartApi().subscribe((response) => {
+    //   this.list = response
+    // })
     // this.cartService.clearCartApi().subscribe((response) => {
     //   this.cartService.getListCartApi().subscribe((response) => {
     //     this.list = response;
