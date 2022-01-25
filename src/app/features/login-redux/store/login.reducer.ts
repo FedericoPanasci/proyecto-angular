@@ -1,18 +1,25 @@
 import { createReducer, on } from "@ngrx/store";
 import { loginState } from "./login-state.model";
-import { showUser } from "./login.actions";
+import { cleanUser, showUser } from "./login.actions";
 
 export const stateInitial: loginState = {
-  user: "",
-  role: ""
+  title: 'Nesfliz',
+  role: 'Bienvenido a '
 }
-// let userShow: loginState;
+
 const _loginReducer = createReducer(
   stateInitial,
-  on(showUser, (state, {User}) => {
-    return {...state, User}
+  on(showUser, (state, {title, role}) => {
+    return {
+      ...state,
+      title: title,
+      role: role}
+  }),
+
+  on(cleanUser, () => ({
+    ...stateInitial
   })
-)
+))
 
 export function loginReducer(state: any, action: any){
   return _loginReducer(state, action)

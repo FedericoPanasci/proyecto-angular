@@ -25,21 +25,7 @@ export class LoginService implements OnInit{
   ngOnInit(): void {
   }
 
-  // validate(mail: string, password: string):boolean{
-  //   let valid: boolean = false;
-  //   this.user.forEach(usuario => {
-  //     if(usuario.mail === mail && usuario.password === password){
-  //       valid = true;
-  //     }
-  //   })
-  //   return valid;
-  // }
-
-  //-------loginApi
   validateCredentials(user: string, password: string): Observable<boolean> {
-    console.log(user);
-    console.log(password);
-
     return this.httpClient.post<any>(this.url, { user, password })
     .pipe (
       map(response => {
@@ -74,5 +60,12 @@ export class LoginService implements OnInit{
       role: this.role,
       token: this.token
     }
+  }
+
+  singOut(){
+    this.token = null;
+    this.user = '';
+    this.userName = '';
+    this.role = '';
   }
 }

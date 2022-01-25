@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  user: User[] = [];
   error!: string;
   login: boolean = false;
 
@@ -35,6 +34,7 @@ export class LoginComponent implements OnInit {
   passwordControl = this.userForm.controls['password'];
 
   newUser: any[] = [];
+  titleUser: string = '';
 
   saveUser() {
     //guardo los datos del forms en el array
@@ -46,11 +46,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private store: Store) {}
+    private store: Store
+  ) {}
 
-  ngOnInit(
-
-  ): void {}
+  ngOnInit(): void {
+    // this.store.dispatch(showUser({ title: this.titleUser }));
+    console.log(this.titleUser);
+  }
 
   submit() {
     this.loginService
@@ -66,10 +68,12 @@ export class LoginComponent implements OnInit {
         if (valid) {
           this.login = true;
           this.router.navigate(['peliculas']);
+          // ---------------- redux ---------------------------
           const loginUser = this.loginService.getUserInfo();
-          this.store.dispatch(
-            showUser(loginUser)
-          )
+          console.log(loginUser.user);
+          this.titleUser = loginUser;
+          this.store.dispatch(showUser({ title: loginUser.user, role: loginUser.role }));
+          // localStorage.setItem('role', JSON.stringify(loginUser.role));
         } else {
           Swal.fire({
             icon: 'error',

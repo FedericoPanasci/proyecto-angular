@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+// import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent } from './features/cart/components/cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
@@ -21,13 +21,17 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { SingOutComponent } from './components/sing-out/sing-out.component';
+import { loginReducer } from './features/login-redux/store/login.reducer';
+import { LoginComponent } from './components/login/login.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CartComponent,
+    // CartComponent,
     MenuComponent,
     MyAccountComponent,
     HooksComponent,
@@ -36,7 +40,8 @@ import { environment } from '../environments/environment';
     AdmMovieComponent,
     AdmMovieListComponent,
     AdmMovieComponent,
-    AdmMovieListComponent
+    AdmMovieListComponent,
+    SingOutComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +51,9 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreModule.forRoot({ login: loginReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

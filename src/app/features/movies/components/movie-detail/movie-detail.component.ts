@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { cartAddMovie } from 'src/app/features/cart/store/cart-actions';
 import { MovieService } from 'src/app/features/movies/service/movie.service';
 import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -20,7 +22,8 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private moviesService: MovieService,
-    public cartService: CartService
+    public cartService: CartService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -36,16 +39,18 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     )
   }
 
-  add(movie1: MovieAPI){
-    this.cartService.addCartApi(movie1).subscribe(response => {
-      console.log(response)
-    });
-    Swal.fire({
-      icon: 'success',
-      title: 'This movie was added',
-      showConfirmButton: false,
-      timer: 1500
-    })
+  add(movie: MovieAPI){
+    this.store.dispatch(cartAddMovie({movie: movie}))
+
+    // this.cartService.addCartApi(movie).subscribe(response => {
+    //   console.log(response)
+    // });
+    // Swal.fire({
+    //   icon: 'success',
+    //   title: 'This movie was added',
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // })
   };
 
   ngOnDestroy(): void {
