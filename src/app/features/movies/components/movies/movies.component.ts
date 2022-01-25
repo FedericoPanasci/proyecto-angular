@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { cartAddMovie } from 'src/app/features/cart/store/cart-actions';
 import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment';
@@ -13,12 +16,13 @@ import { MovieService } from '../../service/movie.service';
 })
 export class MoviesComponent implements OnInit {
   public urlImage = environment.imageApi;
+
   constructor(
     private movieService: MovieService,
     public cartService: CartService,
     private router: Router,
-
-    ) { }
+    private store: Store
+  ) { }
 
   moviesAPI: MovieAPI[] = [];
 
@@ -33,8 +37,10 @@ export class MoviesComponent implements OnInit {
    }
 
    add(movie: MovieAPI){
-    this.cartService.addCartApi(movie).subscribe(response =>
-    console.log(response));
+    this.store.dispatch(cartAddMovie({movie: movie}))
+
+    // this.cartService.addCartApi(movie).subscribe(response =>
+    // console.log(response));
     Swal.fire({
       icon: 'success',
       title: 'This movie was added',

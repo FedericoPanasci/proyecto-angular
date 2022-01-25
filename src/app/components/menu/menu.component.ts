@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { LoginUser } from 'src/app/features/login-redux/login.model';
 import { loginState } from 'src/app/features/login-redux/store/login-state.model';
-import { showUser } from 'src/app/features/login-redux/store/login.actions';
+import { cleanUser, showUser } from 'src/app/features/login-redux/store/login.actions';
 import { loginSelector, loginStateSelector } from 'src/app/features/login-redux/store/login.selector';
 import { User } from 'src/app/models/user.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -48,14 +48,13 @@ export class MenuComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Cerrar Sesion'
-
     }).then((result) => {
       if (result.value) {
         this.cartService.clearCartApi().subscribe(response => {
           console.log(response);
         });
         this.loginService.singOut();
-        this.store.dispatch(showUser({ title: "", role: "" }))
+        this.store.dispatch(cleanUser())
         Swal.fire(
           'Tu sesion ha sido cerrada',
           'Muchas gracias por visitarnos !',

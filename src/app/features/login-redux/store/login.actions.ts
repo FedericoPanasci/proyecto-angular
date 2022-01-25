@@ -5,3 +5,6 @@ export const showUser = createAction(
   props<{ title: string, role: string }>()
 )
 
+export const cleanUser = createAction(
+  'LogOut - clear user'
+)

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent } from './features/cart/components/cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
@@ -31,7 +31,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CartComponent,
+    // CartComponent,
     MenuComponent,
     MyAccountComponent,
     HooksComponent,

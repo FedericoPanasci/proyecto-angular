@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { loginState } from "./login-state.model";
-import { showUser } from "./login.actions";
+import { cleanUser, showUser } from "./login.actions";
 
 export const stateInitial: loginState = {
   title: 'Nesfliz',
@@ -14,8 +14,12 @@ const _loginReducer = createReducer(
       ...state,
       title: title,
       role: role}
+  }),
+
+  on(cleanUser, () => ({
+    ...stateInitial
   })
-)
+))
 
 export function loginReducer(state: any, action: any){
   return _loginReducer(state, action)
