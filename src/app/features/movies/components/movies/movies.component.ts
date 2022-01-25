@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { cartAddMovie } from 'src/app/features/cart/store/cart-actions';
+import { cartAddMovie, cartSetContent } from 'src/app/features/cart/store/cart-actions';
 import { MovieAPI, MoviesAPI } from 'src/app/models/movieApi.model';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment';
@@ -38,6 +38,7 @@ export class MoviesComponent implements OnInit {
 
    add(movie: MovieAPI){
     this.store.dispatch(cartAddMovie({movie: movie}))
+    this.store.dispatch(cartSetContent({movies: this.moviesAPI}))
 
     // this.cartService.addCartApi(movie).subscribe(response =>
     // console.log(response));
