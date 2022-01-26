@@ -47,10 +47,9 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 form-group">
           <label for="exampleInputTitle" class="form-label" style="color: var(--letra)" >Descripcion</label>
-          <textarea name="overview" id="overview" cols="150" rows="8" aria-describedby="overviewHelp" formControlName="overview"></textarea>
-          <!-- <input type="text" class="form-control" id="overview" aria-describedby="overviewHelp" formControlName="overview"> -->
+          <textarea class="form-control" name="overview" id="exampleFormControlTextarea1" rows="3" maxlength="2000" aria-describedby="overviewHelp" formControlName="overview"></textarea>
           <div *ngIf="movieForm.controls['overview'].invalid && movieForm.controls['overview'].touched" class="alert alert-danger">
             Ingrese una descripcion de la pelicula
           </div>

@@ -18,7 +18,6 @@ import { StoreModule } from '@ngrx/store';
     MaterialModule,
     CartRoutingModule,
     StoreModule.forFeature('cart', cartReducer),
-    EffectsModule.forRoot([]),
     EffectsModule.forFeature([CartEffects])
   ]
 })

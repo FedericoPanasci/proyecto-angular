@@ -7,11 +7,11 @@
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nam nav-link" >{{ role$ }} {{ title$ }}</a>
+          <a class="nam nav-link" >{{ title$ }}</a>
         </li>
         <li>
           <a *ngIf="role$ === 'admin'" class="nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</a>
-          <a *ngIf="role$ === 'user'" class="nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</a>
+          <!-- <a *ngIf="role$ === 'user'" class="nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</a> -->
         </li>
         <li class="nav-item">
           <a *ngIf="role$ === 'admin' || role$ === 'user'" class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/">Alquiler de peliculas</a>
@@ -29,7 +29,7 @@
           <a *ngIf="role$ !== 'admin' && role$ !== 'user'" class="nav-link" routerLinkActive="active" routerLink="register">Register</a>
         </li>
         <li class="nav-item">
-          <a *ngIf="role$ === 'admin' || role$ === 'user'" class="nav-link" routerLinkActive="active" routerLink="login" (click)="singOut()">Cerrar Sesion</a>
+          <a *ngIf="role$ === 'admin' || role$ === 'user'" class="nav-link" routerLinkActive="active" routerLink="" (click)="singOut()">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
