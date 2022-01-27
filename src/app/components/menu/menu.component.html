@@ -3,14 +3,14 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
 
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nam nav-link" >{{ title$ }}</a>
+          <span class="nam nav-link" >{{ title$ }}</span>
         </li>
         <li>
-          <a *ngIf="role$ === 'admin'" class="nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</a>
+          <span *ngIf="role$ === 'admin'" class=" nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</span>
           <!-- <a *ngIf="role$ === 'user'" class="nam nav-link" routerLinkActive="active" routerLink="">{{ role$ }}</a> -->
         </li>
         <li class="nav-item">

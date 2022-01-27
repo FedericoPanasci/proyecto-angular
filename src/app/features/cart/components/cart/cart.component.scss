@@ -6,9 +6,9 @@
   .clear {
     display: flex;
     justify-content: center;
-    margin-left: 16px;
-    margin-right: 5px;
-    padding-bottom: 0px;
+    align-items: center;
+    margin: auto auto;
+    padding: auto;
     background-color: var(--letra);
     color: var(--contraste);
     border-color: var(--);
